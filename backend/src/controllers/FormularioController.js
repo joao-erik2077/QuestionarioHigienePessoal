@@ -3,6 +3,7 @@ const mysql = require('./../database/database');
 class FormularioController {
 
     insert(req, res) {
+        console.log(req.body);
 
         if (req.body.p1 === null || req.body.p2 === null || req.body.p3 === null || req.body.p4 === null || req.body.p5 === null) {
             return res.status(400).send({
