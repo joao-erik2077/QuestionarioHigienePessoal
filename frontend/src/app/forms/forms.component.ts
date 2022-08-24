@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './shared/data.service';
+import { IChoice } from 'src/app/model/IChoice.model';
 
 @Component({
   selector: 'app-forms',
@@ -7,6 +8,14 @@ import { DataService } from './shared/data.service';
   styleUrls: ['./forms.component.scss']
 })
 export class FormsComponent implements OnInit {
+
+  questionValues: IChoice = {
+    p1: 1,
+    p2: 1,
+    p3: 1,
+    p4: 1,
+    p5: 1,
+  }
 
   questionData = [
     {
@@ -19,7 +28,6 @@ export class FormsComponent implements OnInit {
         '3 ou mais',
         'Não tomo banho',
       ],
-      currentValue: 1
     },
     {
       id: 2,
@@ -30,7 +38,6 @@ export class FormsComponent implements OnInit {
         '3 vezes ou mais',
         'Não escovo os dentes',
       ],
-      currentValue: 1
     },
     {
       id: 3,
@@ -41,7 +48,6 @@ export class FormsComponent implements OnInit {
         '10-15 minutos',
         '15 minutos ou mais',
       ],
-      currentValue: 1
     },
     {
       id: 4,
@@ -50,7 +56,6 @@ export class FormsComponent implements OnInit {
         'Sim',
         'Não',
       ],
-      currentValue: 1
     },
     {
       id: 5,
@@ -59,18 +64,29 @@ export class FormsComponent implements OnInit {
         'Sim',
         'Não',
       ],
-      currentValue: 1
     },
   ]
 
   constructor(private dataService : DataService) { }
 
-  changeValue(changes : any): void {
-    console.log(changes);
+  switchInput(event : any): void {
+    let id = parseInt(event.target.id);
+    let target = parseInt(event.target.value)+1;
+    if (id == 1) {
+      this.questionValues.p1 = target;
+    } else if(id == 2) {
+      this.questionValues.p2 = target;
+    } else if(id == 3) {
+      this.questionValues.p3 = target;
+    } else if(id == 4) {
+      this.questionValues.p4 = target;
+    } else {
+      this.questionValues.p5 = target;
+    }
   }
 
   submitForms(): void {
-    this.dataService.sendForms(this.questionData);
+    this.dataService.postForms(this.questionValues);
     //window.location.reload();
   }
 
