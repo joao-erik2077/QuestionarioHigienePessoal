@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+    color: rgb(202, 68, 255);
+    transition: .3s ease-in;
+}
+
+a:hover {
+  color: rgb(141, 46, 179);
+}

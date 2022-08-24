@@ -1,0 +1,19 @@
+<div class="card" *ngFor="let item of questionData">
+  <div class="card-body">
+    <h5 class="card-title"><strong>{{item.id}}</strong> - {{item.sentence}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Preencha um dos campos.</h6>
+    <hr>
+    <div class="card-forms">
+      <div class="form-check" *ngFor="let question of item.answers; index as x">
+        <input class="form-check-input" type="radio" [name]="'flexRadioDefault' + item.id" [(ngModel)]="item.currentValue" [id]="'flexRadioDefault' + item.id" required>
+        <label class="form-check-label text-start" [for]="'flexRadioDefault' + item.id">
+          {{question}}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mb-3">
+  <button class="btn btn-primary" type="submit" (click)="submitForms()">ENVIAR FORMULÁRIO</button>
+  <div class="invalid-feedback text-danger">Preencha todos os campos!</div>
+</div>
