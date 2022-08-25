@@ -1,6 +1,10 @@
-# Frontend
+# Questionario Higiene Pessoal - *Frontend*
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+
+## Proxy Start
+
+Run `npm start` for a proxy serve.
 
 ## Development server
 
