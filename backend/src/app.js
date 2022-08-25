@@ -1,21 +1,17 @@
-const express = require('express');
+const express = require("express");
+const cors = require("cors");
+
+const router = require("./routes/formulario");
+
 const app = express();
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-
-const formularioRouter = require('./routes/formulario');
-
-app.use(formularioRouter);
 app.use(cors());
-app.use(morgan);
-app.use(bodyParser.json());
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
+app.use(express.json());
+app.use(router);
+
+app.listen(3333, () => {
+  console.log("Aplicação rodando na porta 3333");
 });
 
-module.exports = app;
+app.get("/", (request, response) => {
+  response.send("Success");
+});

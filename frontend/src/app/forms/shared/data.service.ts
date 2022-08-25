@@ -9,16 +9,18 @@ import { IChoice } from 'src/app/model/IChoice.model';
 export class DataService {
 
   private URL: string = 'http://localhost:3333/formulario';
+  private corsHeader : any;
 
   constructor(private http: HttpClient) { }
 
   public postForms(model: IChoice) {
     console.log(model);
-    const params = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .set('Access-Control-Allow-Origin', '*')//
-    this.http.post<Observable<IChoice>>(this.URL, JSON.stringify(model), {headers: params})
+    this.corsHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    });
+    this.http.post<Observable<IChoice>>(this.URL, JSON.stringify(model), {headers: this.corsHeader})
       .subscribe(
         (val) => {
           console.log("POST call successful value returned in body",
