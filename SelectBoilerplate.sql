@@ -17,6 +17,11 @@ FROM formulario
 WHERE p3 = 1;
 
 -- Não fecham a torneira ao escovar os dentes
+SELECT count(*) 'Fecham a torneira ao escovar os dentes'
+FROM formulario
+WHERE p4 = 1;
+
+-- Fecham a torneira ao escovar os dentes
 SELECT count(*) 'Não fecham a torneira ao escovar os dentes'
 FROM formulario
 WHERE p4 = 2;
@@ -25,3 +30,9 @@ WHERE p4 = 2;
 SELECT count(*) 'Usam fio dental'
 FROM formulario
 WHERE p5 = 1;
+
+-- Não sam fio dental
+SELECT count(*) 'Não usam fio dental'
+FROM formulario
+WHERE p5 = 1;
+
