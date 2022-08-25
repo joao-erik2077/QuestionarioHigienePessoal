@@ -14,12 +14,11 @@ export class DataService {
 
   public postForms(model: IChoice) {
     console.log(model);
-    /*const params = new HttpHeaders()
-    .set('Access-Control-Allow-Origin', 'http://localhost:4200')
-    .set('Access-Control-Allow-Methods', 'POST')
-    .set('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-    .set('Access-Control-Allow-Credentials', 'true');*/
-    this.http.post<Observable<IChoice>>(this.URL, model)//,{headers: params})
+    const params = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')//
+    this.http.post<Observable<IChoice>>(this.URL, JSON.stringify(model), {headers: params})
       .subscribe(
         (val) => {
           console.log("POST call successful value returned in body",
